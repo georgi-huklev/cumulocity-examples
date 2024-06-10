@@ -19,6 +19,7 @@
 package com.cumulocity.agent.snmp.platform.service;
 
 import com.cumulocity.agent.snmp.bootstrap.model.CredentialsAvailableEvent;
+import com.cumulocity.agent.snmp.config.BootstrapProperties;
 import com.cumulocity.agent.snmp.config.GatewayProperties;
 import com.cumulocity.agent.snmp.platform.model.PlatformConnectionReadyEvent;
 import com.cumulocity.agent.snmp.platform.pubsub.subscriber.MeasurementSubscriber;
@@ -63,7 +64,7 @@ public class PlatformProviderTest {
     private Platform bootstrapPlatform;
 
     @Mock
-    private GatewayProperties.BootstrapProperties bootstrapProperties;
+    private BootstrapProperties bootstrapProperties;
 
     @Mock
     private Platform platform;

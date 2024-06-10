@@ -20,6 +20,7 @@ package com.cumulocity.agent.snmp.bootstrap.service;
 
 import com.cumulocity.agent.snmp.bootstrap.model.DeviceCredentialsKey;
 import com.cumulocity.agent.snmp.bootstrap.repository.DeviceCredentialsStore;
+import com.cumulocity.agent.snmp.config.BootstrapProperties;
 import com.cumulocity.agent.snmp.config.GatewayProperties;
 import com.cumulocity.rest.representation.devicebootstrap.DeviceCredentialsRepresentation;
 import org.junit.After;
@@ -43,7 +44,7 @@ public class DeviceCredentialsStoreServiceTest {
     private DeviceCredentialsStore deviceCredentialsStore;
 
     @Mock
-    private GatewayProperties.BootstrapProperties bootstrapProperties;
+    private BootstrapProperties bootstrapProperties;
 
     private DeviceCredentialsStoreService deviceCredentialsStoreService;
 

@@ -83,20 +83,6 @@ public class GatewayProperties {
 		return (poolSize <= 0) ? 8 : poolSize;
 	}
 
-	@Configuration
-	@Data
-	@ToString(exclude = "password")
-	public class BootstrapProperties {
-
-		@Value("#{'${C8Y.bootstrap.tenant:management}'.trim()}")
-		private String tenantId;
-
-		@Value("#{'${C8Y.bootstrap.user:devicebootstrap}'.trim()}")
-		private String username;
-
-		@Value("#{'${C8Y.bootstrap.password:}'.trim()}")
-		private String password;
-	}
 
 	@Configuration
 	@Data
