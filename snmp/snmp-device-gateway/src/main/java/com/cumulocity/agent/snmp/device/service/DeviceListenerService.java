@@ -192,6 +192,7 @@ public class DeviceListenerService {
 								SnmpDevicePoller devicePoller = null;
 
 								try {
+									log.info("SNMP Props: {}, Device Wrapper: {}, VaribleBindingList: {}", snmpProperties, deviceWrapper, varibleBindingList);
 									devicePoller = new SnmpDevicePoller(snmpProperties, deviceWrapper,
 											varibleBindingList);
 									ResponseEvent responseEvent = devicePoller.poll();
