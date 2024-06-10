@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2012-2020 Cumulocity GmbH
- * Copyright (c) 2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, 
+ * Copyright (c) 2021 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA,
  * and/or its subsidiaries and/or its affiliates and/or their licensors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.percederberg.mibble.Mib;
 import net.percederberg.mibble.MibLoader;
 import net.percederberg.mibble.MibLoaderException;
+import net.percederberg.mibble.MibLoaderLog;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,6 +61,11 @@ public class MibParserService {
             return extractMibInformation(mibs);
         } catch (MibLoaderException e) {
             log.error(MISSING_MIB_DEPENDENCIES, e);
+            Iterator<MibLoaderLog.LogEntry> it = e.getLog().entries();
+            while ( it.hasNext() ) {
+                MibLoaderLog.LogEntry entry = it.next();
+                log.error("Error processing mib file:\nMESSAGE: {}\nFILE: {}:{}:{}", entry.getMessage(), entry.getFile().getName(), entry.getLineNumber(), entry.getColumnNumber());
+            }
             throw new IllegalArgumentException(MISSING_MIB_DEPENDENCIES);
         } catch (IOException e) {
             log.error(IO_EXCEPTION_DURING_ZIP_FILE_PROCESSING, e);
